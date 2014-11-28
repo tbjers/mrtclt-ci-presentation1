@@ -1,0 +1,218 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>Meteor in production with Modulus and Codeship</title>
+
+		<meta name="description" content="Meteor in production with Modulus and Codeship">
+		<meta name="author" content="Torgny Bjers">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="css/reveal.min.css">
+		<link rel="stylesheet" href="css/theme/beige.css" id="theme">
+
+		<!-- For syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+		<script>
+			if( window.location.search.match( /print-pdf/gi ) ) {
+				var link = document.createElement( 'link' );
+				link.rel = 'stylesheet';
+				link.type = 'text/css';
+				link.href = 'css/print/pdf.css';
+				document.getElementsByTagName( 'head' )[0].appendChild( link );
+			}
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+				<section>
+					<h1><img src="img/meteor-logo.png" alt="" style="border:none; box-shadow:none; background:transparent;" /></h1>
+					<h3>Meteor in production with Modulus and Codeship</h3>
+					<p>
+						<small>Created by <a href="https://github.com/tbjers">Torgny Bjers</a> / <a href="http://twitter.com/torgnybjers">@torgnybjers</a></small>
+					</p>
+				</section>
+
+				<section>
+					<h2>Continuous Integration</h2>
+					<p class="fragment fade-in">
+						No need for a release manager or lead developer to evaluate each release before it goes to production.
+					</p>
+					<p class="fragment fade-in">
+						Changes to your repository are immediately built and tested then pushed live to Modulus.
+					</p>
+					<p class="fragment fade-in">
+						Test-driven development encourages simple designs and inspires confidence.
+					</p>
+				</section>
+
+				<section>
+					<h2>Test-Driven Development</h2>
+					<ol>
+						<li class="fragment fade-in">add a test</li>
+						<li class="fragment fade-in">run tests and see if new one fails</li>
+						<li class="fragment fade-in">write some code</li>
+						<li class="fragment fade-in">run tests</li>
+						<li class="fragment fade-in">refactor</li>
+						<li class="fragment fade-in">rinse, repeat...</li>
+					</ol>
+				</section>
+
+				<section>
+					<h2>Focus on code</h2>
+					<p>
+						Keep deployment and hosting simple so that you can focus on code instead of playing devops.
+					</p>
+				</section>
+
+				<section>
+					<h2>Why Modulus?</h2>
+					<p class="fragment fade-in">github integration</p>
+					<p class="fragment fade-in">sticky sessions</p>
+					<p class="fragment fade-in">web sockets</p>
+					<p class="fragment fade-in">SSL endpoints</p>
+					<p class="fragment fade-in">scalability</p>
+				</section>
+
+				<section>
+					<h2>Getting started with Modulus</h2>
+					<p>
+						Create a Modulus account and get $15 credit that covers about a month's usage of one servo.
+					</p>
+					<a href="https://modulus.io/">https://modulus.io/</a>
+				</section>
+
+				<section>
+					<h2>Creating your first project</h2>
+					<p class="fragment fade-in">
+						Navigate to your account page and select Create New Project. Select the 396 MB servo size and give it the name <code>my-app</code>.
+					</p>
+					<pre class="fragment fade-in"><code class="bash" data-trim contenteditable style="font-size: 18px;">
+npm install -g modulus
+meteor create my-app
+cd my-app
+modulus -p 'my-app'
+					</code></pre>
+					<p class="fragment fade-in">
+						You have just deployed your Meteor application to Modulus.
+					</p>
+				</section>
+
+				<section>
+					<h2>Why Codeship?</h2>
+					<p class="fragment fade-in">test automation</p>
+					<p class="fragment fade-in">continuous deployment</p>
+					<p class="fragment fade-in">notification integration</p>
+					<p class="fragment fade-in">never ship bad code</p>
+				</section>
+
+				<section>
+					<h2>Setting up Codeship</h2>
+					<div class="fragment fade-in">
+						<p>Setup Commands</p>
+						<pre><code class="bash" data-trim contenteditable style="font-size: 18px;">
+nvm install 0.10.28
+nvm use 0.10.28
+npm install jshint -gcurl -o meteor_install_script.sh https://install.meteor.com/
+chmod +x meteor_install_script.sh
+sed -i "s/type sudo >\/dev\/null 2>&1/\ false /g" meteor_install_script.sh
+./meteor_install_script.sh
+export PATH=$PATH:~/.meteor/
+meteor --version
+						</code></pre>
+					</div>
+					<div class="fragment fade-in">
+						<p>Test Commands</p>
+						<pre><code class="bash" data-trim contenteditable style="font-size: 18px;">
+jshint .
+						</code></pre>
+					</div>
+				</section>
+
+				<section>
+					<h2>Configure Deployments</h2>
+					<ol>
+						<li class="fragment fade-in">click deployment menu</li>
+						<li class="fragment fade-in">select Modulus</li>
+						<li class="fragment fade-in">
+							generate API token
+							<pre><code class="bash" data-trim contenteditable style="font-size: 18px;">
+modulus token create
+							</code></pre>
+						</li>
+						<li class="fragment fade-in">click the green checkbox</li>
+						<li class="fragment fade-in">…</li>
+						<li class="fragment fade-in">profit!</li>
+					</ol>
+				</section>
+
+				<section>
+					<h2>Scaling with Modulus</h2>
+					<p class="fragment fade-in">scale across regions and providers</p>
+					<p class="fragment fade-in">use AWS us-east-1 if you use Compose</p>
+					<p class="fragment fade-in">load-based scaling on the roadmap</p>
+				</section>
+
+				<section>
+					<h2>Questions or comments?</h2>
+					<p>
+						<small><a href="https://github.com/tbjers">Torgny Bjers</a> / <a href="http://twitter.com/torgnybjers">@torgnybjers</a></small>
+					</p>
+				</section>
+
+			</div>
+
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.min.js"></script>
+
+		<script>
+
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+				transition: 'fade', // default/cube/page/concave/zoom/linear/fade/none
+
+				// Parallax scrolling
+				// parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+				// parallaxBackgroundSize: '2100px 900px',
+
+				// Optional libraries used to extend on reveal.js
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>
