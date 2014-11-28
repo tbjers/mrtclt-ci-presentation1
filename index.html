@@ -61,6 +61,11 @@
 					<p class="fragment fade-in">
 						Test-driven development encourages simple designs and inspires confidence.
 					</p>
+					<aside class="notes">
+						No need for a release manager or lead developer to evaluate each release before it goes to production.
+						Changes to your repository are immediately built and tested then pushed live to Modulus.
+						Test-driven development encourages simple designs and inspires confidence.
+					</aside>
 				</section>
 
 				<section>
@@ -73,6 +78,9 @@
 						<li class="fragment fade-in">refactor</li>
 						<li class="fragment fade-in">rinse, repeat...</li>
 					</ol>
+					<aside class="notes">
+						add test, run tests, write code, run rests, refactor
+					</aside>
 				</section>
 
 				<section>
@@ -89,6 +97,9 @@
 					<p class="fragment fade-in">web sockets</p>
 					<p class="fragment fade-in">SSL endpoints</p>
 					<p class="fragment fade-in">scalability</p>
+					<aside class="notes">
+						Github, sticky sessions, web sockets, SSL, scalability. Mongo benefits better from being hosted somewhere like Compose where we can trail the oplog.
+					</aside>
 				</section>
 
 				<section>
@@ -121,6 +132,9 @@ modulus -p 'my-app'
 					<p class="fragment fade-in">continuous deployment</p>
 					<p class="fragment fade-in">notification integration</p>
 					<p class="fragment fade-in">never ship bad code</p>
+					<aside class="notes">
+						automation, deployment, notifications, avoid bad code
+					</aside>
 				</section>
 
 				<section>
@@ -144,6 +158,9 @@ meteor --version
 jshint .
 						</code></pre>
 					</div>
+					<aside class="notes">
+						Setup commands, test commands. Supports both Github and Bitbucket.
+					</aside>
 				</section>
 
 				<section>
@@ -161,12 +178,18 @@ modulus token create
 						<li class="fragment fade-in">…</li>
 						<li class="fragment fade-in">profit!</li>
 					</ol>
+					<aside class="notes">
+						When building, Codeship also checks the site to see that it's up, and if not, the test fails. Not sure how that benefits you if you've already pushed buggy code since the site would be down.
+					</aside>
 				</section>
 
 				<section>
 					<h2>Scaling with Modulus</h2>
 					<p class="fragment fade-in">scale across regions and providers</p>
 					<p class="fragment fade-in">use AWS us-east-1 if you use Compose</p>
+					<aside class="notes">
+						Scale across regions and providers. Compose houses most of its services in the us-east-1 region.
+					</aside>
 				</section>
 
 				<section>
@@ -175,6 +198,9 @@ modulus token create
 					<p class="fragment fade-in">CPU</p>
 					<p class="fragment fade-in">memory</p>
 					<p class="fragment fade-in">response time</p>
+					<aside class="notes">
+						Supports per region and CPU, memory, response time metrics.
+					</aside>
 				</section>
 
 				<section>
