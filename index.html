@@ -51,13 +51,6 @@
 				</section>
 
 				<section>
-					<h2>It's my Birthday</h2>
-					<p>
-						I can do what I want!
-					</p>
-				</section>
-
-				<section>
 					<h2>Continuous Integration</h2>
 					<p class="fragment fade-in">
 						No need for a release manager or lead developer to evaluate each release before it goes to production.
@@ -151,7 +144,8 @@ modulus -p 'my-app'
 						<pre><code class="bash" data-trim contenteditable style="font-size: 18px;">
 nvm install 0.10.28
 nvm use 0.10.28
-npm install jshint -gcurl -o meteor_install_script.sh https://install.meteor.com/
+npm install jshint -g
+curl -o meteor_install_script.sh https://install.meteor.com/
 chmod +x meteor_install_script.sh
 sed -i "s/type sudo >\/dev\/null 2>&1/\ false /g" meteor_install_script.sh
 ./meteor_install_script.sh
